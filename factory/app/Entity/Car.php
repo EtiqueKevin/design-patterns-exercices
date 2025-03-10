@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class Car {
+class Car implements Vehicule {
     private $costPerKm;
     private $fuelType;
 
