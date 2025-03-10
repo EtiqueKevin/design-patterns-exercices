@@ -1,5 +1,28 @@
 <?php
 
-# TODO: Créer une classe Config en Singleton
-
 namespace App;
+
+class Config {
+    private static $instance;
+    private $config ;
+
+    private function __construct()
+    {
+        $this->config = require(__DIR__ . '/../config/config.php');
+    }
+
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new Config();
+        }
+
+        return self::$instance;
+    }
+
+    public function get($key)
+    {
+        return $this->config[$key] ?? null;
+    }
+}
+
